@@ -14,7 +14,7 @@ const PAUSE_COMMA := 0.2
 const PAUSE_SENTENCE := 0.6  # after . ! ?
 const PAUSE_LINE := 0.35     # after a line break
 
-const GAME_SCENE := "res://main.tscn"
+const GAME_SCENE := "res://controls.tscn"   # the quick how-to-play screen, then level 1
 const KNIGHT_SCALE := Vector2(4, 4)
 const BALL_SCALE := Vector2(0.25, 0.25)
 
