@@ -1,0 +1,185 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://intro.gd" id="1_intro"]
+[ext_resource type="Texture2D" path="res://sprites/castle_bg.png" id="2_bg"]
+[ext_resource type="FontFile" path="res://fonts/PixelOperator8.ttf" id="3_font"]
+[ext_resource type="FontFile" path="res://fonts/PixelOperator8-Bold.ttf" id="4_bold"]
+[ext_resource type="Texture2D" path="res://sprites/knight.png" id="5_knight"]
+[ext_resource type="Texture2D" path="res://sprites/ball_9.png" id="6_ball"]
+
+[sub_resource type="AtlasTexture" id="Knight_0_0"]
+atlas = ExtResource("5_knight")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Knight_0_1"]
+atlas = ExtResource("5_knight")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Knight_0_2"]
+atlas = ExtResource("5_knight")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Knight_0_3"]
+atlas = ExtResource("5_knight")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Knight_7_0"]
+atlas = ExtResource("5_knight")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Knight_7_1"]
+atlas = ExtResource("5_knight")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Knight_7_2"]
+atlas = ExtResource("5_knight")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Knight_7_3"]
+atlas = ExtResource("5_knight")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_knight"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Knight_7_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Knight_7_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Knight_7_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Knight_7_3")
+}],
+"loop": false,
+"name": &"curse",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Knight_0_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Knight_0_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Knight_0_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Knight_0_3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}]
+
+[node name="Intro" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_intro")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.32, 0.32, 0.42, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Picture" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Knight" type="AnimatedSprite2D" parent="Picture"]
+position = Vector2(-170, 0)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_knight")
+animation = &"idle"
+
+[node name="Arrow" type="Label" parent="Picture"]
+offset_left = -70.0
+offset_top = -24.0
+offset_right = 70.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(1, 0.84, 0.29, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_bold")
+theme_override_font_sizes/font_size = 40
+text = ">>>"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ball" type="Sprite2D" parent="Picture"]
+position = Vector2(170, 0)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_ball")
+region_enabled = true
+region_rect = Rect2(384, 336, 224, 208)
+
+[node name="Story" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -90.0
+offset_right = 500.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.93, 0.91, 0.86, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_constants/line_separation = 10
+theme_override_fonts/normal_font = ExtResource("3_font")
+theme_override_fonts/bold_font = ExtResource("4_bold")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+scroll_active = false
+visible_characters_behavior = 1
+
+[node name="Prompt" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -70.0
+offset_right = 300.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.75, 0.75, 0.8, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 16
+text = "Click or press any key to start"
+horizontal_alignment = 1

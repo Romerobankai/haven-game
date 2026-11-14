@@ -1,0 +1,99 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://sprites/monsters/rat_run.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="Frame_0"]
+atlas = ExtResource("2_tex")
+region = Rect2(0, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="Frame_1"]
+atlas = ExtResource("2_tex")
+region = Rect2(70, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="Frame_2"]
+atlas = ExtResource("2_tex")
+region = Rect2(140, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="Frame_3"]
+atlas = ExtResource("2_tex")
+region = Rect2(210, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="Frame_4"]
+atlas = ExtResource("2_tex")
+region = Rect2(280, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="Frame_5"]
+atlas = ExtResource("2_tex")
+region = Rect2(350, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="Frame_6"]
+atlas = ExtResource("2_tex")
+region = Rect2(420, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="Frame_7"]
+atlas = ExtResource("2_tex")
+region = Rect2(490, 0, 70, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_anim"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Frame_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame_7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="Rect_body"]
+size = Vector2(40, 18)
+
+[sub_resource type="RectangleShape2D" id="Rect_hurt"]
+size = Vector2(44, 22)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_script")
+speed = 170.0
+hp = 2
+ledge_ahead = 22.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("Rect_body")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_anim")
+autoplay = "default"
+
+[node name="LedgeCheck" type="RayCast2D" parent="."]
+target_position = Vector2(0, 21)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("Rect_hurt")

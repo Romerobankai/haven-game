@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://nc71iiwcvlmy"]
+
+[ext_resource type="Script" uid="uid://naepeqh6pey4" path="res://character_body_2d.gd" id="1_76iar"]
+[ext_resource type="Texture2D" uid="uid://cv5md0ii6yyle" path="res://New Piskel-1.png.png" id="2_76iar"]
+[ext_resource type="PackedScene" uid="uid://dih12nm70uo33" path="res://bullet.tscn" id="3_vbiav"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1dkf1"]
+size = Vector2(129, 130)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_boy81"]
+size = Vector2(1418, 283)
+
+[node name="main area" type="Node2D" unique_id=1219354802]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=759214483]
+script = ExtResource("1_76iar")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=899243279]
+position = Vector2(274, 198.5)
+scale = Vector2(4.1250005, 3.8437502)
+texture = ExtResource("2_76iar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1873768142]
+position = Vector2(274.5, 196)
+shape = SubResource("RectangleShape2D_1dkf1")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1747119529]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=266900525]
+position = Vector2(719, 518.5)
+shape = SubResource("RectangleShape2D_boy81")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=590951959]
+offset_left = 6.0
+offset_top = 377.0
+offset_right = 1431.0
+offset_bottom = 653.0
+
+[node name="Bullet" parent="." unique_id=166935948 instance=ExtResource("3_vbiav")]
+position = Vector2(6, 377)

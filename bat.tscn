@@ -1,0 +1,115 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://bat.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://sprites/monsters/bat_fly.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="Frame_0"]
+atlas = ExtResource("2_tex")
+region = Rect2(0, 0, 87, 87)
+
+[sub_resource type="AtlasTexture" id="Frame_1"]
+atlas = ExtResource("2_tex")
+region = Rect2(87, 0, 87, 87)
+
+[sub_resource type="AtlasTexture" id="Frame_2"]
+atlas = ExtResource("2_tex")
+region = Rect2(174, 0, 87, 87)
+
+[sub_resource type="AtlasTexture" id="Frame_3"]
+atlas = ExtResource("2_tex")
+region = Rect2(261, 0, 87, 87)
+
+[sub_resource type="AtlasTexture" id="Frame_4"]
+atlas = ExtResource("2_tex")
+region = Rect2(348, 0, 87, 87)
+
+[sub_resource type="AtlasTexture" id="Frame_5"]
+atlas = ExtResource("2_tex")
+region = Rect2(435, 0, 87, 87)
+
+[sub_resource type="AtlasTexture" id="Frame_6"]
+atlas = ExtResource("2_tex")
+region = Rect2(522, 0, 87, 87)
+
+[sub_resource type="AtlasTexture" id="Frame_7"]
+atlas = ExtResource("2_tex")
+region = Rect2(609, 0, 87, 87)
+
+[sub_resource type="AtlasTexture" id="Frame_8"]
+atlas = ExtResource("2_tex")
+region = Rect2(696, 0, 87, 87)
+
+[sub_resource type="AtlasTexture" id="Frame_9"]
+atlas = ExtResource("2_tex")
+region = Rect2(783, 0, 87, 87)
+
+[sub_resource type="AtlasTexture" id="Frame_10"]
+atlas = ExtResource("2_tex")
+region = Rect2(870, 0, 87, 87)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_anim"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Frame_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame_9")
+}, {
+"duration": 1.0,
+"texture": SubResource("Frame_10")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="Rect_body"]
+size = Vector2(36, 22)
+
+[sub_resource type="RectangleShape2D" id="Rect_hurt"]
+size = Vector2(40, 26)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("Rect_body")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, -2)
+sprite_frames = SubResource("SpriteFrames_anim")
+autoplay = "default"
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("Rect_hurt")

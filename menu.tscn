@@ -1,0 +1,291 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_menu"]
+[ext_resource type="Theme" path="res://menu_theme.tres" id="2_theme"]
+[ext_resource type="Texture2D" path="res://sprites/castle_bg.png" id="3_bg"]
+[ext_resource type="FontFile" path="res://fonts/PixelOperator8-Bold.ttf" id="4_bold"]
+[ext_resource type="Texture2D" path="res://sprites/castle_props.png" id="5_props"]
+
+[sub_resource type="Gradient" id="Gradient_vignette"]
+offsets = PackedFloat32Array(0.35, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.85)
+
+[sub_resource type="GradientTexture2D" id="Vignette"]
+gradient = SubResource("Gradient_vignette")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1.05, 1.05)
+
+[sub_resource type="AtlasTexture" id="Torch_0"]
+atlas = ExtResource("5_props")
+region = Rect2(128, 86, 16, 28)
+
+[sub_resource type="AtlasTexture" id="Torch_1"]
+atlas = ExtResource("5_props")
+region = Rect2(512, 86, 16, 28)
+
+[sub_resource type="AtlasTexture" id="Torch_2"]
+atlas = ExtResource("5_props")
+region = Rect2(896, 86, 16, 28)
+
+[sub_resource type="AtlasTexture" id="Torch_3"]
+atlas = ExtResource("5_props")
+region = Rect2(1280, 86, 16, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_torch"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Torch_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Torch_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Torch_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Torch_3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="Panel_style"]
+content_margin_left = 24.0
+content_margin_top = 18.0
+content_margin_right = 24.0
+content_margin_bottom = 18.0
+bg_color = Color(0.06, 0.06, 0.1, 0.92)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.6, 0.48, 0.2, 1)
+
+[node name="Menu" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_menu")
+
+[node name="Sky" type="TextureRect" parent="."]
+modulate = Color(0.5, 0.5, 0.66, 1)
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 300.0
+scale = Vector2(4, 4)
+mouse_filter = 2
+texture = ExtResource("3_bg")
+stretch_mode = 1
+
+[node name="Vignette" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("Vignette")
+expand_mode = 1
+
+[node name="Title" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="BannerLeft" type="Sprite2D" parent="Title"]
+position = Vector2(-470, 70)
+scale = Vector2(3, 3)
+texture = ExtResource("5_props")
+region_enabled = true
+region_rect = Rect2(80, 128, 32, 47)
+
+[node name="BannerRight" type="Sprite2D" parent="Title"]
+position = Vector2(470, 70)
+scale = Vector2(3, 3)
+texture = ExtResource("5_props")
+region_enabled = true
+region_rect = Rect2(80, 128, 32, 47)
+
+[node name="TorchLeft" type="AnimatedSprite2D" parent="Title"]
+position = Vector2(-310, 90)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_torch")
+autoplay = "default"
+
+[node name="TorchRight" type="AnimatedSprite2D" parent="Title"]
+position = Vector2(310, 90)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_torch")
+autoplay = "default"
+frame = 2
+
+[node name="Royal" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = -420.0
+offset_right = 420.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(1, 0.84, 0.29, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.55)
+theme_override_colors/font_outline_color = Color(0.2, 0.09, 0.02, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("4_bold")
+theme_override_font_sizes/font_size = 80
+text = "ROYAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rebound" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = -420.0
+offset_top = 80.0
+offset_right = 420.0
+offset_bottom = 168.0
+theme_override_colors/font_color = Color(0.96, 0.94, 0.88, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.55)
+theme_override_colors/font_outline_color = Color(0.2, 0.09, 0.02, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("4_bold")
+theme_override_font_sizes/font_size = 80
+text = "REBOUND"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = -420.0
+offset_top = 176.0
+offset_right = 420.0
+offset_bottom = 200.0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.88, 1)
+theme_override_font_sizes/font_size = 16
+text = "A cursed knight. A bouncing ball. One way back."
+horizontal_alignment = 1
+
+[node name="MainButtons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 30.0
+offset_right = 150.0
+offset_bottom = 242.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Play" type="Button" parent="MainButtons"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Play"
+
+[node name="Settings" type="Button" parent="MainButtons"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Settings"
+
+[node name="Quit" type="Button" parent="MainButtons"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Quit"
+
+[node name="SettingsPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -10.0
+offset_right = 250.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("Panel_style")
+
+[node name="Box" type="VBoxContainer" parent="SettingsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Header" type="Label" parent="SettingsPanel/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84, 0.29, 1)
+theme_override_fonts/font = ExtResource("4_bold")
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="MusicLabel" type="Label" parent="SettingsPanel/Box"]
+layout_mode = 2
+text = "Music volume"
+
+[node name="MusicSlider" type="HSlider" parent="SettingsPanel/Box"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+step = 5.0
+value = 100.0
+
+[node name="SfxLabel" type="Label" parent="SettingsPanel/Box"]
+layout_mode = 2
+text = "Sound effects volume"
+
+[node name="SfxSlider" type="HSlider" parent="SettingsPanel/Box"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+step = 5.0
+value = 100.0
+
+[node name="Fullscreen" type="CheckButton" parent="SettingsPanel/Box"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="Back" type="Button" parent="SettingsPanel/Box"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+text = "Back"
+
+[node name="Footer" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -36.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.62, 0.62, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+text = "Made for the Hack Club Haven Bangalore Game Jam"
+horizontal_alignment = 1
+
+[node name="Fade" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

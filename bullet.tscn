@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dih12nm70uo33"]
+
+[ext_resource type="Texture2D" uid="uid://bf0g0uqmh5rl1" path="res://New Piskel-1.png (1).png" id="1_v7oki"]
+[ext_resource type="Script" path="res://bullet.gd" id="2_bullet"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fdpak"]
+radius = 5.0
+
+[node name="Bullet" type="CharacterBody2D" unique_id=166935948]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("2_bullet")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=836146741]
+shape = SubResource("CircleShape2D_fdpak")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=193284002]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_v7oki")
+offset = Vector2(1.5, 3.5)

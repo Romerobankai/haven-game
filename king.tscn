@@ -1,0 +1,195 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://king.gd" id="1_king"]
+[ext_resource type="Texture2D" path="res://sprites/knight.png" id="2_knight"]
+
+[sub_resource type="AtlasTexture" id="K_idle_0"]
+atlas = ExtResource("2_knight")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="K_idle_1"]
+atlas = ExtResource("2_knight")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="K_idle_2"]
+atlas = ExtResource("2_knight")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="K_idle_3"]
+atlas = ExtResource("2_knight")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="K_run_0"]
+atlas = ExtResource("2_knight")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="K_run_1"]
+atlas = ExtResource("2_knight")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="K_run_2"]
+atlas = ExtResource("2_knight")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="K_run_3"]
+atlas = ExtResource("2_knight")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="K_run_4"]
+atlas = ExtResource("2_knight")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="K_run_5"]
+atlas = ExtResource("2_knight")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="K_run_6"]
+atlas = ExtResource("2_knight")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="K_run_7"]
+atlas = ExtResource("2_knight")
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="K_hit_0"]
+atlas = ExtResource("2_knight")
+region = Rect2(0, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="K_hit_1"]
+atlas = ExtResource("2_knight")
+region = Rect2(32, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="K_hit_2"]
+atlas = ExtResource("2_knight")
+region = Rect2(64, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="K_hit_3"]
+atlas = ExtResource("2_knight")
+region = Rect2(96, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="K_death_0"]
+atlas = ExtResource("2_knight")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="K_death_1"]
+atlas = ExtResource("2_knight")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="K_death_2"]
+atlas = ExtResource("2_knight")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="K_death_3"]
+atlas = ExtResource("2_knight")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_king"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("K_idle_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("K_idle_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("K_idle_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("K_idle_3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("K_run_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("K_run_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("K_run_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("K_run_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("K_run_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("K_run_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("K_run_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("K_run_7")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("K_hit_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("K_hit_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("K_hit_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("K_hit_3")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("K_death_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("K_death_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("K_death_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("K_death_3")
+}],
+"loop": false,
+"name": &"death",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="Rect_body"]
+size = Vector2(66, 108)
+
+[sub_resource type="RectangleShape2D" id="Rect_hurt"]
+size = Vector2(56, 96)
+
+[node name="King" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_king")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("Rect_body")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0.82, 0.35, 1)
+position = Vector2(0, -12)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_king")
+animation = &"idle"
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("Rect_hurt")
