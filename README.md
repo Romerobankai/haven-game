@@ -1,9 +1,9 @@
 Royal Rebound
 A cursed knight. A bouncing ball. One way back.
 
-The King cursed you, his loyal knight, and turned you into a bouncing ball. Bounce through three rooms of his castle, find the key in each one, and defeat the King to break the curse and bounce back.
+The King cursed you, his loyal knight, and turned you into a bouncing ball. Bounce through three rooms of his castle, find the key in each one, and defeat the King to break the curse and bounce back
 
-Made for the Hack Club Haven Bangalore Game Jam. Thank you, Hack Club!
+Made for the Hack Club Haven Bangalore Game Jam. 
 
 Screenshots
 The King	The Frozen Throne
